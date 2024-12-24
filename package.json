@@ -4,7 +4,7 @@
   "description": "base whatsapp multidevice pairing code",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node index.js"
   },
   "author": "base",
   "license": "MIT",
