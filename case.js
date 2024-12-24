@@ -1,3 +1,5 @@
+//ERROR? hub wa.me/639300771484
+
 require("./config");
 
 const fs = require("fs");
@@ -69,7 +71,7 @@ module.exports = async (ptz, m) => {
 
     const isowner = (sender) => sender === global.owner;
 
-    //Registrasi
+    //==================[ FUNCTION REGISTRASI ]======================\\
     const registerFilePath = path.join(__dirname, "./database/register.json");
 
     const loadRegisterData = () => {
@@ -172,20 +174,19 @@ module.exports = async (ptz, m) => {
 
         await ptz.sendMessage(m.chat, {
           react: {
-            text: "🕐", // Emoji loading
+            text: "🕐", 
             key: m.key,
           },
         });
 
-        // Simulasi proses (delay)
         setTimeout(async () => {
           await ptz.sendMessage(m.chat, {
             react: {
-              text: "✅", // Emoji selesai
+              text: "✅", 
               key: m.key,
             },
           });
-        }, 200); // Ganti 3000 dengan durasi waktu yang diinginkan
+        }, 200); 
 
         const menuText = `Hallo ${pushname} ${waktuucapan}👋🏻
     `;
@@ -213,9 +214,9 @@ module.exports = async (ptz, m) => {
               quotedParticipant: fVerif.key.participant,
 
               externalAdReply: {
-                title: `Asisten Pribadi ${global.name}`,
+                title: `Milicent BlueNnight`,
 
-                body: "Powered By Adam Dev",
+                body: "https://github.com/adamdev20",
 
                 mediaType: 1,
 
@@ -284,7 +285,6 @@ module.exports = async (ptz, m) => {
         if (!isRegistered(sender)) {
           return m.reply(global.mess.register);
         }
-        if (!isCreator) return m.reply("yang noob ga diajak😂");
 
         if (!text) return m.reply("");
 
