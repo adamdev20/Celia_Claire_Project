@@ -1,4 +1,5 @@
 //ERROR? hub wa.me/639300771484
+//donate me? https://saweria.co/adammewing
 
 require("./config");
 
