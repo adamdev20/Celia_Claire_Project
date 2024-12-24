@@ -1,7 +1,14 @@
 
 
 
-global.owner = ["6289502378666"]
+global.owner = ["6289502378666"] //ganti dengan nomor anda
+global.name = ["Adam Dev"] //ganti dengan nama anda 
+
+global.mess = {
+    owner: "Fitur Khusus Owner",
+    wait: "Tolong Tunggu Sebentar!",
+    register: "Sepertinya Anda Belum Terdaftar,Silahkan Ketik .register"
+    }
 
 let fs = require('fs')
 let file = require.resolve(__filename)
