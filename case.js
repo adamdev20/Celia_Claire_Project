@@ -12,7 +12,7 @@ const moment = require("moment-timezone");
 
 const cheerio = require("cheerio");
 
-module.exports = async (ptz, m) => {
+module.exports = async (adam, m) => {
   try {
     const body =
       (m.mtype === "conversation" && m.message.conversation) ||
@@ -37,9 +37,9 @@ module.exports = async (ptz, m) => {
     const args = body.trim().split(/ +/).slice(1);
     const text = (q = args.join(" "));
     const sender = m.key.fromMe
-      ? ptz.user.id.split(":")[0] + "@s.whatsapp.net" || ptz.user.id
+      ? adam.user.id.split(":")[0] + "@s.whatsapp.net" || adam.user.id
       : m.key.participant || m.key.remoteJid;
-    const botNumber = await ptz.decodeJid(ptz.user.id);
+    const botNumber = await adam.decodeJid(adam.user.id);
     const senderNumber = sender.split("@")[0];
     const isCreator =
       (m &&
@@ -69,9 +69,8 @@ module.exports = async (ptz, m) => {
       return mediaTypes.some((type) => message.message[type]);
     };
 
-    const isowner = (sender) => sender === global.owner;
+    //>>REGISTER FUNCTION<<
 
-    //==================[ FUNCTION REGISTRASI ]======================\\
     const registerFilePath = path.join(__dirname, "./database/register.json");
 
     const loadRegisterData = () => {
@@ -87,11 +86,12 @@ module.exports = async (ptz, m) => {
 
     let registerData = loadRegisterData();
 
+    //>>TIME FUNCTION<<
+
     function isRegistered(sender) {
       return registerData.some((user) => user.id === sender);
     }
 
-    //==================[ FUNCTION WAKTU ]======================\\
     function getFormattedDate() {
       var currentDate = new Date();
       var day = currentDate.getDate();
@@ -138,10 +138,8 @@ module.exports = async (ptz, m) => {
       minutesms = ms % (60 * 1000);
       sec = Math.floor(minutesms / 1000);
       return days + " Hari " + hours + " Jam " + minutes + " Menit";
-      // +minutes+":"+sec;
     }
 
-    // Sayying time
     const timee = moment().tz("Asia/Jakarta").format("HH:mm:ss");
     if (timee < "23:59:00") {
       var waktuucapan = "Selamat Malam";
@@ -172,7 +170,7 @@ module.exports = async (ptz, m) => {
           return m.reply(global.mess.register);
         }
 
-        await ptz.sendMessage(m.chat, {
+        await adam.sendMessage(m.chat, {
           react: {
             text: "🕐", 
             key: m.key,
@@ -180,7 +178,7 @@ module.exports = async (ptz, m) => {
         });
 
         setTimeout(async () => {
-          await ptz.sendMessage(m.chat, {
+          await adam.sendMessage(m.chat, {
             react: {
               text: "✅", 
               key: m.key,
@@ -201,7 +199,7 @@ module.exports = async (ptz, m) => {
           message: { conversation: `_*${hariini}*_` },
         };
 
-        await ptz.sendMessage(
+        await adam.sendMessage(
           m.chat,
           {
             text: menuText,
@@ -242,7 +240,7 @@ module.exports = async (ptz, m) => {
         const userExists = registerData.find((user) => user.id === sender);
 
         if (userExists) {
-          await ptz.sendMessage(m.chat, {
+          await adam.sendMessage(m.chat, {
             text: "Anda sudah terdaftar sebelumnya!",
           });
         } else {
@@ -255,7 +253,7 @@ module.exports = async (ptz, m) => {
           registerData.push(newUser);
           saveRegisterData(registerData);
 
-          await ptz.sendMessage(m.chat, {
+          await adam.sendMessage(m.chat, {
             text: `Registrasi berhasil! Selamat datang, ${pushname}! \n\nID: ${newUser.id}\nNama: ${newUser.name}\nWaktu Registrasi: ${hariini}`,
           });
         }
@@ -274,7 +272,7 @@ module.exports = async (ptz, m) => {
 
         const response = userList || "Belum ada pengguna yang terdaftar.";
 
-        await ptz.sendMessage(m.chat, {
+        await adam.sendMessage(m.chat, {
           text: `*Pengguna Terdaftar:*\n\n${response}`,
         });
         break;
@@ -288,11 +286,11 @@ module.exports = async (ptz, m) => {
 
         if (!text) return m.reply("");
 
-        const participants = await ptz
+        const participants = await adam
           .groupMetadata(m.chat)
           .then((res) => res.participants);
 
-        await ptz.sendMessage(
+        await adam.sendMessage(
           m.chat,
           {
             text: text ? text : "",
