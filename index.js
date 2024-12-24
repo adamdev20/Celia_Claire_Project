@@ -27,10 +27,10 @@ browser: ["Ubuntu", "Chrome", "20.0.04"],
 });
 
 if (!Adam.authState.creds.registered) {
-const phoneNumber = await question('Enter Phone Number :\n');
+const phoneNumber = await question('Enter Phone Number : 62xxxx');
 let code = await Adam.requestPairingCode(phoneNumber);
 code = code?.match(/.{1,4}/g)?.join("-") || code;
-console.log(`Pairing Code :`, code);
+console.log(`Enter Code :`, code);
 }
 
 store.bind(Adam.ev)
