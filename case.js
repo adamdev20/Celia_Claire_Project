@@ -199,7 +199,6 @@ module.exports = async (adam, m) => {
 
 *🌈𝗠𝗔𝗜𝗡 𝗠𝗘𝗡𝗨🌈*
 hidetag
-jurusyapping
 
 *🛡𝗢𝗪𝗡𝗘𝗥 𝗠𝗘𝗡𝗨🛡*
 self
