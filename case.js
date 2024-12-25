@@ -51,6 +51,7 @@ module.exports = async (adam, m) => {
       false;
     const pushname = m.pushName || `${senderNumber}`;
     const isBot = botNumber.includes(senderNumber);
+    const isGroup = m.chat.endsWith('@g.us')
     const color = chalk;
 
     let quoted = m.quoted ? m.quoted : m;
@@ -187,17 +188,33 @@ module.exports = async (adam, m) => {
           });
         }, 200); 
 
-        const menuText = `Hallo ${pushname} ${waktuucapan}👋🏻
+        const menuText = `*_Hallo ${pushname} ${waktuucapan}_*
+
+*🎗𝗜𝗡𝗙𝗢 𝗕𝗢𝗧🎗*
+*Nama Bot:* Milicent Bluenight MD
+*Nama Owner:* ${global.name}
+*Versi Bot:* 1.0
+*prefix:* "${prefix}"
+*Tanggal:* ${hariini}
+
+*🌈𝗠𝗔𝗜𝗡 𝗠𝗘𝗡𝗨🌈*
+hidetag
+jurusyapping
+
+*🛡𝗢𝗪𝗡𝗘𝗥 𝗠𝗘𝗡𝗨🛡*
+self
+public
+checkuser
     `;
 
         const fVerif = {
           key: {
             participant: "0@s.whatsapp.net",
 
-            remoteJid: "status@broadcast",
+            remoteJid: "0@s.whatsapp.net",
           },
 
-          message: { conversation: `_*${hariini}*_` },
+          message: { documentMessage: {title: `Adam Corporation`,jpegThumbnail: ""}},
         };
 
         await adam.sendMessage(
@@ -278,6 +295,19 @@ module.exports = async (adam, m) => {
         });
         break;
       }
+            
+        case "public": case "publik": {
+if (!isCreator) return m.reply(global.mess.owner)
+adam.public = true
+m.reply("Successfully changed bot mode to public")
+}
+break
+case "self": case "private": case "priv": case "prib": {
+if (!isCreator) return m.reply(global.mess.owner)
+adam.public = false
+m.reply("Successfully changed bot mode to private")
+}
+            
 
       case "h":
       case "hidetag":
