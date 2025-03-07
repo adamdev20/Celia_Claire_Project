@@ -1,8 +1,3 @@
-//ERROR? hub wa.me/639300771484
-//donate me? https://saweria.co/adammewing
-
-require("./config");
-
 const fs = require("fs");
 const util = require("util");
 const axios = require("axios");
@@ -70,23 +65,6 @@ module.exports = async (adam, m) => {
       ];
       return mediaTypes.some((type) => message.message[type]);
     };
-
-    //>>REGISTER FUNCTION<<
-
-    const registerFilePath = path.join(__dirname, "./database/register.json");
-
-    const loadRegisterData = () => {
-      if (!fs.existsSync(registerFilePath)) {
-        fs.writeFileSync(registerFilePath, JSON.stringify([]));
-      }
-      return JSON.parse(fs.readFileSync(registerFilePath));
-    };
-
-    const saveRegisterData = (data) => {
-      fs.writeFileSync(registerFilePath, JSON.stringify(data, null, 2));
-    };
-
-    let registerData = loadRegisterData();
 
     //>>TIME FUNCTION<<
 
@@ -191,7 +169,7 @@ module.exports = async (adam, m) => {
         const menuText = `*_Hallo ${pushname} ${waktuucapan}_*
 
 *🎗𝗜𝗡𝗙𝗢 𝗕𝗢𝗧🎗*
-*Nama Bot:* Milicent Bluenight MD
+*Nama Bot:* Celia Claire MD
 *Nama Owner:* ${global.name}
 *Versi Bot:* 1.0
 *prefix:* "${prefix}"
@@ -226,7 +204,7 @@ self
               quotedParticipant: fVerif.key.participant,
 
               externalAdReply: {
-                title: `Milicent BlueNnight`,
+                title: `Celia Claire MD`,
 
                 body: "https://github.com/adamdev20",
 
