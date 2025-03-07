@@ -1,2 +1,2 @@
-# About Milicent MD
-Milicent MD is a bot built with the Baileys library. It's a basic bot designed for learning and exploration. This bot already supports Pairing Code, but sadly, it doesn't work on Termux terminal for some reason. So yeah, you can only run it on panels like Pterodactyl.
+# About Celia Claire Project
+Milicent MD is a bot built with the Baileys library. It is a basic bot designed for learning and exploration. It already supports Pairing Code, but unfortunately, it does not work in Termux terminals for some reason. So yes, you can only run it on panels like Pterodactyl.
