@@ -197,13 +197,10 @@ module.exports = async (adam, m) => {
 *prefix:* "${prefix}"
 *Tanggal:* ${hariini}
 
-*🌈𝗠𝗔𝗜𝗡 𝗠𝗘𝗡𝗨🌈*
+*𝗠𝗔𝗜𝗡 𝗠𝗘𝗡𝗨*
 hidetag
-
-*🛡𝗢𝗪𝗡𝗘𝗥 𝗠𝗘𝗡𝗨🛡*
-self
 public
-checkuser
+self
     `;
 
         const fVerif = {
@@ -253,47 +250,6 @@ checkuser
         break;
       }
 
-      case "register": {
-        const userExists = registerData.find((user) => user.id === sender);
-
-        if (userExists) {
-          await adam.sendMessage(m.chat, {
-            text: "Anda sudah terdaftar sebelumnya!",
-          });
-        } else {
-          const newUser = {
-            id: sender,
-            name: pushname,
-            registeredAt: hariini,
-          };
-
-          registerData.push(newUser);
-          saveRegisterData(registerData);
-
-          await adam.sendMessage(m.chat, {
-            text: `Registrasi berhasil! Selamat datang, ${pushname}! \n\nID: ${newUser.id}\nNama: ${newUser.name}\nWaktu Registrasi: ${hariini}`,
-          });
-        }
-        break;
-      }
-
-      case "checkuser": {
-        if (!isCreator) return m.reply(global.mess.owner);
-
-        const userList = registerData
-          .map(
-            (user) =>
-              `ID: ${user.id}\nNama: ${user.name}\nWaktu: ${user.registeredAt}`
-          )
-          .join("\n\n");
-
-        const response = userList || "Belum ada pengguna yang terdaftar.";
-
-        await adam.sendMessage(m.chat, {
-          text: `*Pengguna Terdaftar:*\n\n${response}`,
-        });
-        break;
-      }
             
         case "public": case "publik": {
 if (!isCreator) return m.reply(global.mess.owner)
