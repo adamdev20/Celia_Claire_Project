@@ -169,7 +169,7 @@ module.exports = async (adam, m) => {
         const menuText = `*_Hallo ${pushname} ${waktuucapan}_*
 
 *🎗𝗜𝗡𝗙𝗢 𝗕𝗢𝗧🎗*
-*Nama Bot:* Celia Claire MD
+*Nama Bot:* Celia Claire MD Project
 *Nama Owner:* ${global.name}
 *Versi Bot:* 1.0
 *prefix:* "${prefix}"
