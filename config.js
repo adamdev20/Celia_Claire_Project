@@ -1,13 +1,12 @@
 
 
 
-global.owner = ["6289502378666"] //ganti dengan nomor anda
-global.name = ["Adam Dev"] //ganti dengan nama anda 
+global.owner = ["6289502378666"] //change to your number
+global.name = ["Adam Dev"] //change to your name
 
 global.mess = {
-    owner: "Fitur Khusus Owner",
-    wait: "Tolong Tunggu Sebentar!",
-    register: "Sepertinya Anda Belum Terdaftar,Silahkan Ketik .register"
+    owner: "Owner-specific Features",
+    wait: "Please wait a moment!"
     }
 
 let fs = require('fs')
